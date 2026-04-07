@@ -123,28 +123,21 @@ public class DiaDia {
 			return;
 		}
 		if (this.giocatore.getBorsa().isEmpty()) {
-			console.mostraMessaggio("");
-			console.mostraMessaggio("La borsa è vuota!");
-			console.mostraMessaggio("");
+			console.mostraMessaggio("\nLa borsa è vuota!\n");
 			return;
 		}
             Attrezzo attrezzoDaPosare=this.giocatore.getBorsa().getAttrezzo(nomeAttrezzo);
             if(attrezzoDaPosare==null) {
-		    	console.mostraMessaggio("");
-			    console.mostraMessaggio("Attrezzo non presente nella borsa");
-		        console.mostraMessaggio("");	
+			    console.mostraMessaggio("\nAttrezzo non presente nella borsa\n"); 	
 		        return;
 		    }
 			if (this.partita.getStanzaCorrente().addAttrezzo(attrezzoDaPosare)) {
 				this.giocatore.removeAttrezzo(nomeAttrezzo);
-				console.mostraMessaggio("");
-				console.mostraMessaggio("Attrezzo posato!");
+				console.mostraMessaggio("\nAttrezzo posato!");
 				console.mostraMessaggio(this.giocatore.getBorsa().toString());
 			}
 			else {
-				console.mostraMessaggio("");
-				console.mostraMessaggio("Non è possibile posare l'attrezzo, la stanza è piena!");
-				console.mostraMessaggio("");
+				console.mostraMessaggio("\nNon è possibile posare l'attrezzo, la stanza è piena!\n");
 			}
 	
 		}
@@ -157,21 +150,18 @@ public class DiaDia {
 		}
 		Attrezzo attrezzoDaPrendere = this.partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo);
 		    if(attrezzoDaPrendere==null) {
-		    	console.mostraMessaggio("");
-			    console.mostraMessaggio("Attrezzo non presente nella stanza");
-		        console.mostraMessaggio("");	
+			    console.mostraMessaggio("\nAttrezzo non presente nella stanza\n");
 		        return;
 		    }
-			if (this.giocatore.addAttrezzo(attrezzoDaPrendere)) { //!!!
+			if (this.giocatore.addAttrezzo(attrezzoDaPrendere)) { 
 				this.partita.getStanzaCorrente().removeAttrezzo(attrezzoDaPrendere);
-				console.mostraMessaggio("");
-				console.mostraMessaggio("Attrezzo preso!");
+				console.mostraMessaggio("\nAttrezzo preso!");
 				console.mostraMessaggio(this.giocatore.getBorsa().toString());
 			}
 			else {
-				console.mostraMessaggio("");
-			    console.mostraMessaggio("Borsa piena o troppo pesante");
-		        console.mostraMessaggio("");
+				
+			    console.mostraMessaggio("\nBorsa piena o troppo pesante\n");
+		        
 		        
 				
 			}
