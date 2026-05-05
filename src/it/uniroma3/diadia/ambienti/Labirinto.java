@@ -4,28 +4,31 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Labirinto {
 	
-	private Stanza stanzaFinale;
+	private Stanza stanzaVincente;
 	private Stanza stanzaCorrente;
 	
 	public Labirinto() {
-		this.creaLabirinto();
+		this.creaLabirinto();	
 	}
-	
+
     /**
      * Crea tutte le stanze e le porte di collegamento
      */
-    private void creaLabirinto() {
+    public void creaLabirinto() {
 
 		/* crea gli attrezzi */
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
+		Attrezzo passepartout = new Attrezzo("passepartout",1);
     	
 		/* crea stanze del labirinto */
-		Stanza atrio = new Stanza("Atrio");
-		Stanza aulaN11 = new Stanza("Aula N11");
-		Stanza aulaN10 = new Stanza("Aula N10");
+		Stanza atrio = new StanzaBuia("Atrio");
+		Stanza aulaN11 = new StanzaMagica("Aula N11");
+		Stanza aulaN10 = new StanzaBloccata("Aula N10", "nord", "passepartout");
 		Stanza laboratorio = new Stanza("Laboratorio Campus");
 		Stanza biblioteca = new Stanza("Biblioteca");
+		Stanza bar = new Stanza("Bar");
+		Stanza mensa = new Stanza("Mensa");
 		
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", biblioteca);
@@ -40,22 +43,24 @@ public class Labirinto {
 		laboratorio.impostaStanzaAdiacente("est", atrio);
 		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
 		biblioteca.impostaStanzaAdiacente("sud", atrio);
+		bar.impostaStanzaAdiacente("nord", mensa);
+		mensa.impostaStanzaAdiacente("sud", bar);
 
         /* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
+		aulaN10.addAttrezzo(passepartout);
 		atrio.addAttrezzo(osso);
 
-		// il gioco comincia nell'atrio
-        stanzaCorrente = atrio;  
-        stanzaFinale = biblioteca;
+		// la stanza vincente del labirinto è biblioteca 
+		stanzaVincente= biblioteca;
+		stanzaCorrente=atrio;
     }
+
     
-    public Stanza getStanzaFinale() {
-		return stanzaFinale;
+	public Stanza getStanzaVincente() {
+		return stanzaVincente;
 	}
-    
-    public Stanza getStanzaCorrente() {
-    	return stanzaCorrente;
-    }
-    
+	public Stanza getStanzaCorrente() {
+		return stanzaCorrente;
+	}
 }
