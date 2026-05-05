@@ -20,7 +20,8 @@ public class ComandoVai implements Comando{
 		Stanza prossimaStanza = partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null) {
 			console.mostraMessaggio("Direzione inesistente");
-			return;}
+			return;
+		}
 		partita.setStanzaCorrente(prossimaStanza);
 		console.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 		partita.getGiocatore().decrementaCFU();
