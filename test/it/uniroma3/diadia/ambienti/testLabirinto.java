@@ -58,4 +58,19 @@ class testLabirinto {
 	    Stanza adiacente = iniziale.getStanzaAdiacente(direzione);
 		assertFalse(adiacente==null);
 	}
+	
+//
+	
+	@Test
+	void testStanzaVincenteInBiblioteca() {
+		assertEquals(labirinto.getStanzaFinale().getNome(),"Biblioteca");
+	}
+	@Test
+	void testStanzaInizialeNonVincente() {
+		assertNotEquals(labirinto.getStanzaFinale().getNome(),"Atrio");
+	}
+	@Test
+	void testStanzaInizialeInAtrio() {
+		assertEquals(labirinto.getStanzaCorrente().getNome(),"Atrio");
+	}
 }
