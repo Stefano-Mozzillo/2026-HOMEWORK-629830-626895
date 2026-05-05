@@ -57,7 +57,7 @@ public class Labirinto {
     }
 
     
-	public Stanza getStanzaVincente() {
+	public Stanza getStanzaFinale() {
 		return stanzaVincente;
 	}
 	public Stanza getStanzaCorrente() {
